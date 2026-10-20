@@ -361,24 +361,21 @@
       }
     }
 
-    // FUNGSI UTAMA TEKAN BEL:
-    // Suara HANYA berbunyi jika SERVER mengonfirmasi bahwa peserta ini adalah pemenang kuncian bel (res.success === true)
+    // PENANGANAN TEKAN BEL INSTAN (0 DELAY)
     function handlePressBell() {
       let btn = document.getElementById('btn-bel');
       if (btn.disabled) return;
+
+      // 1. Kunci tombol seketika di layar peserta ini
       btn.disabled = true;
+      btn.innerText = "TERKUNCI";
 
-      // Inisialisasi audio konteks pada gestur sentuh peserta
-      initAudio();
-
+      // 2. Bunyikan suara seketika tanpa menanti jaringan
       let slot = parseInt(currentUser.username.replace('satu', 1).replace('dua', 2).replace('tiga', 3).replace('empat', 4).replace('lima', 5).replace('enam', 6).replace('tujuh', 7).replace('delapan', 8).replace('sembilan', 9)) || 1;
-      
-      sendApiRequest({ action: 'pressBell', nama: currentUser.nama, slot: slot }, function(res) {
-        if (res && res.success) {
-          // HANYA BUNYIKAN SUARA JIKA BERHASIL MENJADI PENEKAN BEL PERTAMA DARI SERVER
-          playBuzzerSound(slot);
-        }
-      });
+      playBuzzerSound(slot);
+
+      // 3. Kirim status penguncian ke Google Spreadsheet di latar belakang
+      sendApiRequest({ action: 'pressBell', nama: currentUser.nama, slot: slot });
     }
 
     function renderMonitor(data) {
