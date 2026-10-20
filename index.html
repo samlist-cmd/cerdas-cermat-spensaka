@@ -7,14 +7,11 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
     body { background: #f1f5f9; color: #1e293b; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 15px 10px; }
     
-    /* Layout Wrapper Otomatis Melebar Saat Admin Login */
     .main-wrapper { width: 100%; max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
     .main-wrapper.admin-mode { max-width: 1150px; }
 
-    /* Card Box Global */
     .card-box { background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; text-align: center; }
 
-    /* Header Nav */
     .header-nav { display: flex; align-items: center; justify-content: space-between; background: #ffffff; padding: 10px 20px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
     .header-brand { display: flex; align-items: center; gap: 12px; text-align: left; }
     .header-brand img { height: 40px; width: auto; object-fit: contain; }
@@ -22,7 +19,6 @@
     .header-sub { font-size: 0.75rem; color: #0284c7; font-weight: 600; }
     .btn-logout { background: #64748b; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
 
-    /* Login Page */
     .login-logo { height: 85px; width: auto; margin: 0 auto 12px auto; display: block; object-fit: contain; }
     .login-school { font-size: 1.3rem; font-weight: 800; color: #0f172a; letter-spacing: 0.5px; }
     .login-event { font-size: 0.85rem; font-weight: 700; color: #0284c7; margin-top: 4px; text-transform: uppercase; }
@@ -31,7 +27,6 @@
     .login-input:focus { border-color: #0284c7; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
     .btn-login { background: #0070f3; color: white; width: 100%; padding: 13px; border: none; border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer; }
 
-    /* Layout Admin 2 Layar Berjajar (Side-by-Side) */
     .admin-grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; text-align: left; }
     @media (max-width: 850px) { .admin-grid-2col { grid-template-columns: 1fr; } }
 
@@ -50,7 +45,6 @@
     .grid-test-sound { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
     .btn-test { background: #0891b2; color: white; border: none; padding: 7px 4px; border-radius: 6px; font-size: 0.72rem; font-weight: bold; cursor: pointer; }
 
-    /* Table Skor Admin */
     .table-title { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
     .skor-table { width: 100%; border-collapse: collapse; text-align: left; }
     .skor-table th { font-size: 0.75rem; color: #64748b; font-weight: 700; padding: 8px 4px; border-bottom: 2px solid #e2e8f0; }
@@ -64,16 +58,13 @@
     .btn-minus { background: #ef4444; }
     .btn-edit { background: #eab308; color: #0f172a; }
 
-    /* Peserta View (Tanpa Tampilan Poin) */
     .btn-buzzer { width: 220px; height: 220px; border-radius: 50%; border: 8px solid #cbd5e1; background: radial-gradient(circle, #ef4444 0%, #991b1b 100%); color: white; font-size: 2rem; font-weight: bold; cursor: pointer; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4); margin: 30px auto; transition: transform 0.1s; display: block; }
     .btn-buzzer:active { transform: scale(0.95); }
     .btn-buzzer:disabled { background: #94a3b8; box-shadow: none; cursor: not-allowed; opacity: 0.5; }
 
-    /* Monitor View */
     .monitor-name { font-size: 3.5rem; color: #0284c7; font-weight: 800; }
     .monitor-score { font-size: 8rem; color: #0f172a; font-weight: 900; line-height: 1; }
     
-    /* Overlay Lampu Monitor Berkedip 2x Lalu Solid */
     .lamp-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #dc2626; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; animation: flashTwice 0.6s ease 2; }
     .lamp-bell-icon { font-size: 6rem; margin-bottom: 10px; }
     .lamp-status-text { font-size: 2.5rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
@@ -89,7 +80,6 @@
 
   <div class="main-wrapper" id="main-wrapper">
 
-    <!-- Header Navigation -->
     <div class="header-nav" id="header-nav" style="display:none;">
       <div class="header-brand">
         <img id="header-logo" src="" alt="Logo">
@@ -101,7 +91,7 @@
       <button class="btn-logout" onclick="handleLogout()">Logout</button>
     </div>
 
-    <!-- 1. FORM LOGIN -->
+    <!-- LOGIN -->
     <div id="view-login" class="card-box">
       <img id="login-logo" class="login-logo" src="https://i.ibb.co.com/HfRL2ngJ/logo-v.png" alt="Logo Sekolah">
       <div class="login-school" id="login-school">SMP NEGERI 1 KANDAT</div>
@@ -116,9 +106,8 @@
       <div id="login-msg" style="color: #ef4444; margin-top: 12px; font-size: 0.85rem; font-weight: 600;"></div>
     </div>
 
-    <!-- 2. DASHBOARD JURI / ADMIN (Dua Kolom Berjajar) -->
+    <!-- ADMIN -->
     <div id="view-admin" style="display:none;" class="admin-grid-2col">
-      <!-- Kolom Kiri: Panel Kontrol Juri -->
       <div class="card-box">
         <div class="juri-title">PANEL JURI</div>
         <div class="bulb-icon" id="juri-bulb">💡</div>
@@ -136,7 +125,6 @@
         <div class="grid-test-sound" id="grid-test-sound"></div>
       </div>
 
-      <!-- Kolom Kanan: Papan Skor Semuanya -->
       <div class="card-box">
         <div class="table-title">🏆 Papan Skor Semua Kelompok</div>
         <table class="skor-table">
@@ -152,13 +140,13 @@
       </div>
     </div>
 
-    <!-- 3. VIEW PESERTA (Tanpa Menampilkan Poin) -->
+    <!-- PESERTA -->
     <div id="view-peserta" class="card-box" style="display:none;">
       <h2 id="peserta-nama" style="font-size: 2rem; color:#0f172a; margin-top: 10px;"></h2>
       <button id="btn-bel" class="btn-buzzer" onclick="handlePressBell()">TEKAN BEL</button>
     </div>
 
-    <!-- 4. VIEW MONITOR -->
+    <!-- MONITOR -->
     <div id="view-monitor" class="card-box" style="display:none; padding: 50px 20px;">
       <div class="monitor-name" id="monitor-nama-peserta">PESERTA</div>
       <div id="monitor-score-container" style="margin-top: 20px;">
@@ -169,7 +157,6 @@
 
   </div>
 
-  <!-- Fullscreen Lampu Monitor -->
   <div id="lamp-overlay" class="lamp-overlay" style="display:none;">
     <div class="lamp-bell-icon">🔔</div>
     <div class="lamp-status-text">BEL MENYALA!</div>
@@ -177,16 +164,29 @@
   </div>
 
   <script>
+    // MASUKKAN URL WEB APP APPS SCRIPT ANDA DI SINI
+    const API_URL = "https://script.google.com/macros/s/AKfycby7SNFrb_6Ah2AD6lpvkqKiDSDvh18GvNsBPnSp6gHvXQCywrtZsRN6XEJ9tXMqI2_V0Q/exec";
+
     let currentUser = null;
     let audioCtx = null;
-
     const bellFrequencies = [300, 350, 400, 450, 500, 550, 600, 650, 700];
 
     window.onload = function() {
-      google.script.run.withSuccessHandler(function(data) {
-        if (data && data.settings) applySettings(data.settings);
-      }).getState();
+      fetch(`${API_URL}?action=getState`)
+        .then(res => res.json())
+        .then(data => { if (data && data.settings) applySettings(data.settings); });
     };
+
+    function sendApiRequest(payload, callback) {
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => { if (callback) callback(data); })
+      .catch(err => console.error(err));
+    }
 
     function applySettings(s) {
       if (s['URL Logo']) {
@@ -203,7 +203,6 @@
       }
     }
 
-    // Fungsi Suara Bel Instan
     function playBuzzerSound(slotIndex) {
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -228,7 +227,7 @@
       let p = document.getElementById('input-password').value;
       document.getElementById('login-msg').innerText = "Memeriksa...";
 
-      google.script.run.withSuccessHandler(function(res) {
+      sendApiRequest({ action: 'login', username: u, password: p }, function(res) {
         if (res.success) {
           currentUser = res.user;
           document.getElementById('view-login').style.display = 'none';
@@ -237,12 +236,11 @@
           if (currentUser.role === 'admin') {
             document.getElementById('main-wrapper').classList.add('admin-mode');
           }
-          
           initApp();
         } else {
           document.getElementById('login-msg').innerText = res.message;
         }
-      }).loginUser(u, p);
+      });
     }
 
     function handleLogout() { location.reload(); }
@@ -253,14 +251,16 @@
     }
 
     function fetchData() {
-      google.script.run.withSuccessHandler(function(data) {
-        applySettings(data.settings);
-        checkSession(data.users);
+      fetch(`${API_URL}?action=getState`)
+        .then(res => res.json())
+        .then(data => {
+          applySettings(data.settings);
+          checkSession(data.users);
 
-        if (currentUser.role === 'peserta') renderPeserta(data);
-        else if (currentUser.role === 'admin') renderAdmin(data);
-        else if (currentUser.role === 'monitor') renderMonitor(data);
-      }).getState();
+          if (currentUser.role === 'peserta') renderPeserta(data);
+          else if (currentUser.role === 'admin') renderAdmin(data);
+          else if (currentUser.role === 'monitor') renderMonitor(data);
+        });
     }
 
     function checkSession(users) {
@@ -272,7 +272,6 @@
       }
     }
 
-    /* RENDER ADMIN (2 LAYAR BERJAJAR) */
     function renderAdmin(data) {
       document.getElementById('view-admin').style.display = 'grid';
       let statusPill = document.getElementById('status-pill');
@@ -329,15 +328,14 @@
       });
     }
 
-    function handleResetBell() { google.script.run.resetBell(); }
-    function handleResetAllScore() { if(confirm("Yakin ingin mereset semua skor menjadi 0?")) google.script.run.resetAllPoin(); }
-    function changeScore(u, delta) { google.script.run.updatePoin(u, delta); }
+    function handleResetBell() { sendApiRequest({ action: 'resetBell' }); }
+    function handleResetAllScore() { if(confirm("Yakin ingin mereset semua skor menjadi 0?")) sendApiRequest({ action: 'resetAllPoin' }); }
+    function changeScore(u, delta) { sendApiRequest({ action: 'updatePoin', username: u, deltaPoin: delta }); }
     function editScorePrompt(u, currentPoin) {
       let val = prompt(`Masukkan skor baru untuk ${u}:`, currentPoin);
-      if (val !== null && val !== "") google.script.run.editPoin(u, val);
+      if (val !== null && val !== "") sendApiRequest({ action: 'editPoin', username: u, newPoin: val });
     }
 
-    /* RENDER PESERTA (Poin Tidak Ditampilkan) */
     function renderPeserta(data) {
       document.getElementById('view-peserta').style.display = 'block';
       let me = data.users.find(u => u.username === currentUser.username);
@@ -355,7 +353,6 @@
       }
     }
 
-    // Eksekusi Tekan Bel oleh Peserta (Suara Langsung Berbunyi Seketika di Perangkat Peserta)
     function handlePressBell() {
       let btn = document.getElementById('btn-bel');
       if (btn.disabled) return;
@@ -363,14 +360,10 @@
 
       let slot = parseInt(currentUser.username.replace('satu', 1).replace('dua', 2).replace('tiga', 3).replace('empat', 4).replace('lima', 5).replace('enam', 6).replace('tujuh', 7).replace('delapan', 8).replace('sembilan', 9)) || 1;
       
-      // 1. Suara bel LANGSUNG berbunyi seketika di HP peserta yang menekan
       playBuzzerSound(slot);
-
-      // 2. Kirim sinyal ke Spreadsheet Server
-      google.script.run.pressBell(currentUser.nama, slot);
+      sendApiRequest({ action: 'pressBell', nama: currentUser.nama, slot: slot });
     }
 
-    /* RENDER MONITOR */
     function renderMonitor(data) {
       document.getElementById('view-monitor').style.display = 'block';
       let monitorNum = currentUser.username.replace('monitor', '');
@@ -380,13 +373,10 @@
         document.getElementById('monitor-nama-peserta').innerText = mappedUser.nama;
         document.getElementById('monitor-poin').innerText = mappedUser.poin;
 
-        // Jika status bel terbuka
         if (data.statusBell.state === 'OPEN') {
           document.getElementById('lamp-overlay').style.display = 'none';
           document.getElementById('monitor-score-container').style.display = 'block';
-        } 
-        // Jika peserta di monitor ini yang menekan bel pertama kali
-        else if (data.statusBell.pressedBy === mappedUser.nama) {
+        } else if (data.statusBell.pressedBy === mappedUser.nama) {
           triggerMonitorLamp(mappedUser.nama);
         }
       }
