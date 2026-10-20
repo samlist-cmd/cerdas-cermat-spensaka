@@ -164,7 +164,7 @@
   </div>
 
   <script>
-    // MASUKKAN URL WEB APP APPS SCRIPT ANDA DI SINI
+    // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
     const API_URL = "https://script.google.com/macros/s/AKfycby7SNFrb_6Ah2AD6lpvkqKiDSDvh18GvNsBPnSp6gHvXQCywrtZsRN6XEJ9tXMqI2_V0Q/exec";
 
     let currentUser = null;
@@ -203,6 +203,7 @@
       }
     }
 
+    // Fungsi Suara Bel sintetis instan
     function playBuzzerSound(slotIndex) {
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -299,7 +300,7 @@
           let btn = document.createElement('button');
           btn.className = 'btn-test';
           btn.innerHTML = `🔔 ${u.nama}`;
-          btn.onclick = () => playBuzzerSound(idx + 1);
+          btn.onclick = () => playBuzzerSound(idx + 1); // Manual click test sound oleh Admin
           testGrid.appendChild(btn);
         });
       }
@@ -353,6 +354,8 @@
       }
     }
 
+    // FUNGSI UTAMA TEKAN BEL:
+    // Suara HANYA dipicu di sini (pada perangkat yang menyentuh/menekan tombol secara langsung)
     function handlePressBell() {
       let btn = document.getElementById('btn-bel');
       if (btn.disabled) return;
@@ -360,7 +363,10 @@
 
       let slot = parseInt(currentUser.username.replace('satu', 1).replace('dua', 2).replace('tiga', 3).replace('empat', 4).replace('lima', 5).replace('enam', 6).replace('tujuh', 7).replace('delapan', 8).replace('sembilan', 9)) || 1;
       
+      // 1. Suara bel LANGSUNG berbunyi seketika HANYA di perangkat ini
       playBuzzerSound(slot);
+
+      // 2. Kirim sinyal kuncian ke Server Spreadsheet
       sendApiRequest({ action: 'pressBell', nama: currentUser.nama, slot: slot });
     }
 
